@@ -1,16 +1,13 @@
 package main
 
-//
-// Go has some limitations WRT to getting pointers.
-//
-// https://utcc.utoronto.ca/~cks/space/blog/programming/GoAddressableValues
-func myName() string {
-	return "Goku"
-}
-
 type Warrior interface {
 	fightingStyle() string
 	makeDisciple() *Warrior
+}
+
+// Cannot provide default methods
+func (warrior *Warrior) practice() string {
+	return "every day"
 }
 
 type Monk struct {
@@ -48,7 +45,20 @@ type Ninja struct {
 	village string
 }
 
+// Next time we'll show Type Empbedding, kind of like composition
+// kind of like Mixins
+
+// Let's talk about a couple cases of addressable
+func myName() string {
+	return "Goku"
+}
+
 func main() {
+	//
+	// Go has some limitations WRT to getting pointers.
+	//
+	// https://utcc.utoronto.ca/~cks/space/blog/programming/GoAddressableValues
+
 	ages := map[string]int{
 		"Mary":   30,
 		"Zorgon": 100,
